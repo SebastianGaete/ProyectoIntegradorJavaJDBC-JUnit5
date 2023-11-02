@@ -124,7 +124,7 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
                 try {
                     pstmt.setString(1, firstName);
                     pstmt.setString(2, lastName);
-                    pstmt.setInt(3, Integer.valueOf(age));
+                    pstmt.setInt(3, age);
                     pstmt.setInt(4, id);
                 } catch (NumberFormatException ex) {
                     throw new ErrorFormatException("Incorrect Delivered Format");
@@ -142,10 +142,10 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
         try (PreparedStatement pstmt = getConnectionForMethod().prepareStatement(query)) {
             if (id > 0) {
                 try {
-                    pstmt.setString(1, String.valueOf(firstName));
-                    pstmt.setString(2, String.valueOf(lastName));
-                    pstmt.setInt(3, Integer.valueOf(age));
-                    pstmt.setString(4, String.valueOf(email));
+                    pstmt.setString(1, firstName);
+                    pstmt.setString(2, lastName);
+                    pstmt.setInt(3, age);
+                    pstmt.setString(4, email);
                     pstmt.setInt(5, id);
                 } catch (NumberFormatException ex) {
                     throw new ErrorFormatException("Incorrect Delivered Format");
@@ -156,6 +156,7 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
             pstmt.executeUpdate();
         } catch (SQLException ex) {}
     }
+
 
 
     @Override
