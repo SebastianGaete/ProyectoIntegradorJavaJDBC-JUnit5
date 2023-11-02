@@ -87,7 +87,11 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
                 query = "UPDATE users SET firstName=? WHERE id = ?";
                 try(PreparedStatement pstmt = getConnectionForMethod().prepareStatement(query)){
                     pstmt.setString(1, listAttibutes.get(0));
-                    pstmt.setInt(2, id);
+                    if(id > 0 ){
+                        pstmt.setInt(2, id);
+                    }else{
+                        throw new UserNotFoundException("User Not Found.");
+                    }
                     pstmt.executeUpdate();
                 }catch (SQLException ex){
 
@@ -98,7 +102,11 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
                 try(PreparedStatement pstmt = getConnectionForMethod().prepareStatement(query)){
                     pstmt.setString(1, listAttibutes.get(0));
                     pstmt.setString(2, listAttibutes.get(1));
-                    pstmt.setInt(3, id);
+                    if(id > 0 ){
+                        pstmt.setInt(2, id);
+                    }else{
+                        throw new UserNotFoundException("User Not Found.");
+                    }
                     pstmt.executeUpdate();
                 }catch (SQLException ex){
 
@@ -110,7 +118,11 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
                     pstmt.setString(1, listAttibutes.get(0));
                     pstmt.setString(2, listAttibutes.get(1));
                     pstmt.setInt(3, Integer.parseInt(listAttibutes.get(2)));
-                    pstmt.setInt(4, id);
+                    if(id > 0 ){
+                        pstmt.setInt(2, id);
+                    }else{
+                        throw new UserNotFoundException("User Not Found.");
+                    }
                     pstmt.executeUpdate();
 
                 }catch (SQLException ex){
@@ -124,7 +136,11 @@ public class MethodsBD implements InterfaceMethodsBD<User>{
                     pstmt.setString(2, listAttibutes.get(1));
                     pstmt.setInt(3, Integer.parseInt(listAttibutes.get(2)));
                     pstmt.setString(4, listAttibutes.get(3));
-                    pstmt.setInt(5, id);
+                    if(id > 0 ){
+                        pstmt.setInt(2, id);
+                    }else{
+                        throw new UserNotFoundException("User Not Found.");
+                    }
                     pstmt.executeUpdate();
                 }catch (SQLException ex){
 

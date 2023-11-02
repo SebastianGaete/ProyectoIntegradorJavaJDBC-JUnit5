@@ -51,7 +51,7 @@ class MethodsBDTest {
         @Test
         @DisplayName("Check Read")
         void testUpdate(){
-            method.update(1, "nameUpdate", "lastnameupdate", "80", "emailUpdate@gmail.com");
+            method.update(1, "nameUpdate2", "lastnameupdate", "90", "emailUpdate@gmail.com");
         }
 
         @Test
@@ -92,9 +92,13 @@ class MethodsBDTest {
         void testUserNotFoundExceptionDelete(){
             assertThrows(UserNotFoundException.class, ()-> method.delete("test2@gmail.com"));
         }
+
+        @Test
+        @DisplayName("UserNotFoundException on Update")
+        void testUserNotFoundExceptionUpdate(){
+            assertThrows(UserNotFoundException.class, ()-> method.update(-12, "nameUpdate8"));
+        }
+
     }
-
-
-
 
 }
